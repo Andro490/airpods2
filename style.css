@@ -1,0 +1,380 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: black;
+  color: rgb(255, 255, 255);
+}
+a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+a:hover {
+  cursor: pointer;
+}
+.head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.head .icon {
+  font-size: 15px;
+  text-transform: capitalize;
+}
+.head ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  align-items: flex-start;
+}
+.head ul li {
+  margin: 10px;
+}
+.heade {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+.ico {
+  font-size: 30px;
+  text-transform: capitalize;
+  padding: (0, 22px);
+}
+
+.button {
+  --width: 100px;
+  --height: 35px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #222;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.45em;
+  font-family: "Arial";
+  transition: background 0.3s;
+}
+
+.button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: #555;
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: 0.25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #555;
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button::after,
+.button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper,
+.text,
+.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0;
+}
+
+.text,
+.icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: #222;
+}
+
+.button:hover .text {
+  top: -100%;
+}
+
+.button:hover .icon {
+  top: 0;
+}
+
+.button:hover:before,
+.button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+.baba {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.baba .main {
+  position: absolute;
+  width: 100%;
+
+  margin-bottom: 50px;
+}
+
+.img {
+  position: relative;
+  top: -120px;
+  left: 230px;
+  z-index: 3;
+}
+.hove {
+  opacity: 0; /* مخفي افتراضيًا */
+  position: fixed; /* تثبيت العنصر في منتصف الشاشة */
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -100%) translateY(500px); /* موضع البداية مزاح للأسفل */
+  transition: opacity 0.8s ease, transform 0.8s ease; /* تأثير التحول السلس */
+}
+
+.hove.active {
+  opacity: 1; /* يظهر العنصر */
+  transform: translate(-50%, -50%) translateY(0); /* يعود إلى المنتصف */
+}
+
+.baba {
+  height: 4000px;
+}
+.image {
+  position: absolute; /* جميع الصور تتراكب فوق بعضها */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ملء الحاوية مع الحفاظ على النسبة */
+  opacity: 0; /* إخفاء الصور افتراضيًا */
+  transition: opacity 0.0001ms ease; /* تأثير ظهور سلس */
+}
+
+.image.active {
+  opacity: 1; /* إظهار الصورة */
+}
+.container {
+  position: fixed; /* تثبيت الصور في منتصف الشاشة */
+  top: 300px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* عرض الصور */
+  height: 100%;
+  overflow: hidden;
+}
+.aa {
+  position: fixed;
+  top: 300px;
+  left: 15%;
+  font-size: 200px;
+}
+.fade-image {
+  /* width: 300px; حجم الصورة */
+  opacity: 0; /* إخفاء افتراضي */
+  position: fixed;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease;
+  top: 400px;
+  left: 750px;
+  height: 300px;
+  z-index: -1;
+}
+.fade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  color: #fffefe;
+  position: fixed; /* يبقى العنصر ثابتًا أثناء التمرير */
+  top: 400px;
+  left: 800px;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease; /* تأثير سلس للشفافية */
+}
+.containere {
+  padding: 100px; /* مسافة بين النصوص */
+}
+.paze {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-size: 55px;
+  margin: 100px 0; /* تباعد بين الجمل */
+  text-align: center; /* محاذاة في المنتصف */
+}
+.project{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+.oo{
+  font-size: 100px;
+  margin-bottom: 50px;
+}
+ .ppp{
+ margin-left: 200px;
+ margin-right: 200px;
+ }
+ #videoContainer {
+  width: 500px;
+  margin: 50px auto;
+  position: absolute;
+  left: 8%;
+  top: 50px;
+
+}
+video {
+  width: 100%;
+  display: block;
+}
+.tyty{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.gren{
+  font-size:larger;
+  color: green;
+}
+.com{
+  position: absolute;
+  width: 500px;
+  right: 90px;
+  top: 250px;
+  font-size: 30px;
+}
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* يمكنك تعديل الارتفاع حسب الحاجة */
+  overflow: hidden;
+}
+.mnmn{
+  position: relative;
+  transition: opacity 0.5s, transform 0.5s;
+}
+.pro{
+  position: sticky;
+  width: 100%;
+  height: 6000px;
+}
+.ijij{
+  position: sticky;
+  top: 122px;
+ 
+}
+.lllll{
+  position: absolute;
+  left: 550px;
+}
+.kkk{
+  font-size: 22px;
+  width: 300px;
+  position: absolute;
+  top: 216px;
+  left: 200px;
+  /* ب js تخليه يتحرك فوق ويختفي وده كود حركة فوق */
+  /* transform: matrix(1,0,0,1,0,300); */
+}
+#llllll {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#oopp {
+  transition: opacity 0.5s, transform 0.5s; /* تأثيرات سلسة */
+}
+
+#ioio{
+  left: 1098px;
+}
+
+.ooooo{
+  position: relative;
+}
+/* #positionAbsolute {
+  position: absolute; */
+  /* top: 0; هذا يحدد مكان الصورة عموديًا، يمكنك تعديله */
+  /* left: 50%;   تحديد مكان الصورة أفقيًا (يمكنك تعديله حسب رغبتك) */
+  /* transform: translateX(-50%); هذا يضمن أن الصورة تتوسط الصفحة */
+  /* background-image: url('044.png'); رابط الصورة */
+  /* background-size: contain;  لجعل الصورة تتناسب مع الحجم المحدد */
+  /* background-repeat: no-repeat;  لضمان عدم تكرار الصورة */
+  /* background-position: center;  تحديد مكان الصورة داخل العنصر */
+  /* width: 500px;  /* حجم الصورة، يمكن تعديله حسب الحاجة */
+  /* height: 500px; حجم الصورة، يمكن تعديله حسب الحاجة */ 
+/* } */
+
+.pipi{
+  width: 682px;
+  position: relative;
+  top: 50px;
+  left: 210px;
+}
+.huhu{
+  font-size: 30px;
+}
+.pllp{
+  font-size: 84px;
+}
+.llpp{
+  position: relative;
+  top: 132px;
+}
+.oioou{
+  position: relative;
+  top: 85px;
+}
